@@ -5,9 +5,13 @@
 @import url('components/_link-button.css');
 @import url('components/_gallery.css');
 
+html, body {
+  /* overflow-y: hidden!important; */
+}
+
 .s-wrapper {
   display: flex;
-  height: 100vh;
+  height: 100vh;  
   flex-flow: row nowrap; 
   background-color: aqua; 
 }
@@ -41,11 +45,23 @@
   position: relative;
 }
 
+.s-wrapper .s-main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Mantém os itens distribuídos, com .bottom próximo */
+  height: 100%; /* Garante que ocupe o espaço total do pai */
+  margin-top: 20px;
+}
+
 .s-wrapper .s-main-content__top {
   height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+}
+
+.s-wrapper .s-main-content__top {
+  margin-bottom: auto; /* Garante que .top cresça naturalmente sem sobreposição */
 }
 
 .s-wrapper .s-main-content__bottom{
@@ -61,7 +77,7 @@
   margin-bottom: 30px;
 }
 
-.s-wrapper .s-main-content__top .s-description{
+.s-wrapper .s-main-content__top .s-description {
   background-color: rgba(0,0,0,.7);
   max-width: 50%;
   padding: 20px;
@@ -80,6 +96,10 @@
 .s-wrapper .s-main-content .s-links{
   padding: 20px;
   padding-left: 0;
+}
+
+.s-wrapper .s-links {
+  margin-bottom: 10px; /* Ajuste para controlar o espaçamento */
 }
 
 .s-wrapper .s-main-content .s-links ul{
@@ -112,18 +132,20 @@
   .s-wrapper .s-main-content {
     padding-left: 0;
     margin-left: 120px;
+    width: auto;
     justify-content: flex-start; /* Garante que o conteúdo esteja próximo ao topo */
   }
 
   .s-wrapper .s-main-content__top {
-    margin-top: -25px; /* Removendo qualquer margem superior que pudesse estar causando o afastamento */
+    /* margin-top: -25px; Removendo qualquer margem superior que pudesse estar causando o afastamento */
     flex: 1;
     padding-top: 10px; /* Espaço pequeno no topo */
   }
 
   .s-wrapper .s-main-content__bottom {
     height: auto;
-    margin-top: -80px;
+    /* margin-top: -80px; */
+    
   }
 
   .s-wrapper .s-main-content .s-logo img {
@@ -135,11 +157,12 @@
   .s-wrapper .s-main-content__top .s-description {
     max-width: 85%;
     padding: 15px;
-    font-size: 14px;
+    /* font-size: 14px; */
+    font-size: clamp(1em, 1em + 1vw, 1.5em);
   }
 
   .s-wrapper video {
     height: auto;
-    object-fit: contain;
+    object-fit: cover;
   }
 }
